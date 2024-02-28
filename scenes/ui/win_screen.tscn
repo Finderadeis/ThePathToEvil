@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/ui/buttons/quitbutton_hover.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/Cover_illustration_the_path_to_evil (2).png" type="Texture" id=2]
+[ext_resource path="res://scripts/ui/win_screen.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/buttons/button03.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/buttons/quitbutton.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/fonts/Wildy Sans.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/ui/buttons/button03_hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/buttons/buttontheme.tres" type="Theme" id=10]
+
+[sub_resource type="DynamicFont" id=4]
+size = 150
+font_data = ExtResource( 6 )
+
+[node name="WinScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="WinBackground" type="Sprite" parent="."]
+position = Vector2( 958, 555 )
+scale = Vector2( 0.821494, 0.821494 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 254.0
+margin_top = 59.0
+margin_right = 1718.0
+margin_bottom = 220.0
+theme = ExtResource( 10 )
+custom_fonts/font = SubResource( 4 )
+text = "You have reached the dark"
+align = 1
+
+[node name="Menu" type="VBoxContainer" parent="."]
+modulate = Color( 0.792157, 0.878431, 1, 1 )
+margin_left = 41.0
+margin_top = 779.0
+margin_right = 371.0
+margin_bottom = 1043.0
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_right = 330.0
+margin_bottom = 264.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 330.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu" type="TextureButton" parent="Menu/CenterRow/Buttons"]
+margin_right = 330.0
+margin_bottom = 130.0
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -63.5
+margin_top = -41.0
+margin_right = 63.5
+margin_bottom = 35.0
+theme = ExtResource( 10 )
+text = "Menu"
+
+[node name="Quit" type="TextureButton" parent="Menu/CenterRow/Buttons"]
+margin_top = 134.0
+margin_right = 330.0
+margin_bottom = 264.0
+theme = ExtResource( 10 )
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 1 )
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Quit" to="." method="_on_Quit_pressed"]

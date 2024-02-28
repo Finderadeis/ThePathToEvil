@@ -1,0 +1,137 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/enemies/enemy_spawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/enemies/base_enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/enemies/enemy_spriteframes_base.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://scenes/enemies/enemy_spriteframes_red.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://scenes/enemies/enemy_spriteframes_green.tres" type="SpriteFrames" id=5]
+[ext_resource path="res://scenes/enemies/enemy_spriteframes_yellow.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://vfx/particles/enemy_dissolve_blue.tres" type="Material" id=7]
+[ext_resource path="res://vfx/particles/enemy_dissolve_green.tres" type="Material" id=8]
+[ext_resource path="res://vfx/particles/enemy_dissolve_red.tres" type="Material" id=9]
+[ext_resource path="res://vfx/particles/enemy_dissolve_base.tres" type="Material" id=10]
+[ext_resource path="res://vfx/particles/enemy_dissolve_yellow.tres" type="Material" id=11]
+[ext_resource path="res://scenes/enemies/enemy_spriteframes_blue.tres" type="SpriteFrames" id=35]
+
+[node name="EnemySpawner" type="YSort"]
+script = ExtResource( 1 )
+start_spawnrate = 0.3
+max_spawnrate = 1.0
+spawnrate_increase = 0.3
+start_enemy_count = 3
+max_enemy_count = 10
+
+[node name="TopConstraint" type="Position2D" parent="."]
+position = Vector2( 0, -150 )
+
+[node name="BottomConstraint" type="Position2D" parent="."]
+position = Vector2( 0, 150 )
+
+[node name="EnemyTypes" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyTypes" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 3 )
+dissolve_mat = ExtResource( 10 )
+scale_factor = 1.0
+knockback_strength = 1500.0
+ult_percentage = 30
+start_spawnrate = 1.0
+start_count = 5
+max_count = 5
+spawn_chance_increase = -0.05
+
+[node name="EnemyStrong" parent="EnemyTypes" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+type_id = 1
+anim_frames = ExtResource( 4 )
+dissolve_mat = ExtResource( 9 )
+scale_factor = 1.0
+max_health = 20.0
+knockback_time = 0.1
+main_attack_damage = 20
+main_attack_cooldown = 1.0
+start_spawnrate = 0.2
+start_count = 1
+max_count = 3
+start_spawn_chance = 0.1
+spawn_chance_increase = 0.1
+
+[node name="EnemyImmune" parent="EnemyTypes" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 35 )
+dissolve_mat = ExtResource( 7 )
+scale_factor = 1.0
+stun_time = 0.0
+start_spawnrate = 0.2
+start_count = 1
+max_count = 2
+start_spawn_chance = 0.1
+spawn_chance_increase = 0.1
+
+[node name="EnemyHuge" parent="EnemyTypes" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 6 )
+dissolve_mat = ExtResource( 11 )
+scale_factor = 1.2
+speed = 340.0
+max_health = 40.0
+main_attack_cooldown = 2.0
+start_spawnrate = 0.2
+start_count = 1
+max_count = 2
+start_spawn_chance = 0.1
+spawn_chance_increase = 0.1
+
+[node name="EnemyWeak" parent="EnemyTypes" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 5 )
+dissolve_mat = ExtResource( 8 )
+scale_factor = 1.0
+speed = 200.0
+max_health = 10.0
+ult_percentage = 10
+start_spawnrate = 1.0
+start_count = 7
+start_spawn_chance = 2.0
+spawn_chance_increase = -1.0
+
+[node name="TutorialEnemies" type="Node2D" parent="."]
+position = Vector2( -3000, 0 )
+
+[node name="TutorialEnemy" parent="TutorialEnemies" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 5 )
+dissolve_mat = ExtResource( 8 )
+scale_factor = 1.0
+speed = 120.0
+max_health = 10.0
+main_attack_cooldown = 3.0
+ult_percentage = 1
+start_spawnrate = 1.0
+start_count = 1
+max_count = 1
+
+[node name="UltEnemy" parent="TutorialEnemies" instance=ExtResource( 2 )]
+visible = false
+is_template = true
+anim_frames = ExtResource( 5 )
+dissolve_mat = ExtResource( 8 )
+scale_factor = 1.0
+speed = 120.0
+max_health = 10.0
+main_attack_cooldown = 3.0
+ult_percentage = 100
+start_spawnrate = 1.0
+start_count = 1
+max_count = 1
+
+[node name="YSort" type="YSort" parent="."]
+
+[connection signal="ult_enemy_died" from="TutorialEnemies/UltEnemy" to="." method="_on_UltEnemy_ult_enemy_died"]

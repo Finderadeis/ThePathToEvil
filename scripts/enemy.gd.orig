@@ -1,0 +1,161 @@
+extends KinematicBody2D
+
+# Enemy Script handling movement, target detection and attacks
+
+
+# signals
+signal enemy_died(node)
+
+# enums
+enum EnemyState {
+	FREE_MOVE,
+	TARGET_SPOTTED,
+	ATTACK,
+	KNOCKBACK,
+	DYING,
+}
+
+# constants
+
+
+# export variables, variable type and value are optional
+export (float) var enemy_speed
+export (float) var enemy_max_health
+export (float) var knockback_time
+export (float) var knockback_strength
+export (int) var main_attack_damage
+export (float) var main_attack_cooldown
+
+
+# public / private variables
+var movement_direction = Vector2(0,0)
+var enemy_state
+var enemy_health
+var target
+var knockback_source
+
+var timer_main_attack = 0.0
+var timer_knockback = 0.0
+
+
+
+# onready variables
+#onready var _onready_var = "Some Value"
+
+
+# Godot callback methods
+func _init():
+	pass
+
+
+func _ready():
+	enemy_state = EnemyState.FREE_MOVE
+	enemy_health = enemy_max_health
+
+
+func _physics_process(delta):
+	
+	update_timers(delta)
+	
+	match enemy_state:
+		EnemyState.FREE_MOVE:
+			movement_direction = Vector2(-1,0)
+			move_and_slide(movement_direction * enemy_speed)
+		EnemyState.TARGET_SPOTTED:
+			if target.is_alive():
+				movement_direction = evaluate_direction()
+				move_and_slide(movement_direction * enemy_speed)
+			else:
+				enemy_state = EnemyState.FREE_MOVE
+		EnemyState.KNOCKBACK:
+			if timer_knockback > 0.0:
+				if knockback_source.x >= get_global_position().x:
+					movement_direction = Vector2(-1,0)
+				else:
+					movement_direction = Vector2(1,0)
+				move_and_slide(movement_direction * knockback_strength)
+			else:
+				enemy_state = EnemyState.FREE_MOVE
+		EnemyState.ATTACK:
+			if target.is_alive():
+				try_attack(delta)
+			else:
+				enemy_state = EnemyState.FREE_MOVE
+
+
+# public / private functions
+
+func update_timers(delta):
+	if timer_knockback > 0.0:
+		timer_knockback -= delta
+	else:
+		timer_knockback = 0.0
+		
+	if timer_main_attack > 0.0:
+		timer_main_attack -= delta
+	else:
+		timer_main_attack = 0.0
+
+
+func evaluate_direction():
+	var target_position = target.get_global_position()
+	var direction = Vector2(0,0)
+
+	if target_position.x > get_global_position().x:
+		direction = get_global_position().linear_interpolate(target_position, enemy_speed)
+		$Sprite.flip_h = true
+	else:
+		direction = get_global_position().linear_interpolate(target_position, enemy_speed)
+		$Sprite.flip_h = false
+		
+	return direction.normalized()
+
+
+func try_attack(delta):
+	if timer_main_attack == 0.0:
+		if target.get_global_position().x > get_global_position().x:
+			$AnimationPlayer.play("punch_r")
+		elif target.get_global_position().x < get_global_position().x:
+			$AnimationPlayer.play("punch_l")
+		timer_main_attack = main_attack_cooldown
+
+
+func take_damage(amount, source_position):
+	enemy_health -= amount
+	if enemy_health <= 0:
+		enemy_state = EnemyState.DYING
+		$AnimationPlayer.play("Die")
+		emit_signal("enemy_died", self)
+	else:
+		timer_knockback = knockback_time
+		knockback_source = source_position
+		enemy_state = EnemyState.KNOCKBACK
+
+
+func _on_PlayerDetectionRange_body_entered(body):
+	if body.has_method("is_alive"):
+		if body.is_alive():
+			target = body
+			enemy_state = EnemyState.TARGET_SPOTTED
+
+
+func _on_PlayerDetectionRange_body_exited(body):
+	if body.has_method("is_alive"):
+		enemy_state = EnemyState.FREE_MOVE
+
+
+func _on_Player_player_died():
+	enemy_state = EnemyState.FREE_MOVE
+
+
+func _on_AttackRange_area_entered(area):
+	if enemy_state != EnemyState.DYING:
+		enemy_state = EnemyState.ATTACK
+
+
+func _on_AttackRange_area_exited(area):
+	enemy_state = EnemyState.TARGET_SPOTTED
+
+
+func _on_Fist_area_entered(area):
+		area.take_damage(main_attack_damage, get_global_position())

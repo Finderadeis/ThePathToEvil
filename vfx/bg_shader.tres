@@ -1,0 +1,34 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D gradient: hint_black;
+uniform float grey_multiply;
+uniform float player_pos = 10.0;
+uniform float level_size = 14000.0;
+
+vec2 GetGradientPosWithOffset(){
+    vec2 result = vec2(player_pos/level_size,0.0);
+    return result;
+}
+
+vec3 GreyMultiply(vec3 input_color){
+    vec3 mult = vec3(grey_multiply,grey_multiply,grey_multiply);
+    return mult + (input_color - mult) * 2.0; 
+}
+
+vec3 GetGradientMix(vec4 input_color){
+    vec2 gradient_position = GetGradientPosWithOffset();
+    vec4 gradient_color = texture(gradient,gradient_position);
+    return mix(gradient_color.rgb, GreyMultiply(input_color.rgb), 0.5);
+}
+
+void fragment(){
+    vec4 input_color = texture(TEXTURE, UV);
+    vec3 gradient_mix = GetGradientMix(input_color);
+
+    COLOR.rgb = gradient_mix;
+    COLOR.a = input_color.a;
+}"

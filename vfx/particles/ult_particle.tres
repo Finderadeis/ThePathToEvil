@@ -1,0 +1,49 @@
+[gd_resource type="ParticlesMaterial" load_steps=7 format=2]
+
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0.0290323, 1 )
+colors = PoolColorArray( 0.748047, 0.547886, 0.0994239, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="Curve" id=19]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 1, -192.793 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.234637, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.871508, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 21 )
+
+[resource]
+lifetime_randomness = 0.57
+trail_divisor = 3
+emission_shape = 5
+emission_ring_radius = 99.02
+emission_ring_inner_radius = 39.6
+emission_ring_height = 3.47
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 767.33
+initial_velocity_random = 0.62
+angular_velocity = 206.73
+angular_velocity_random = 0.41
+orbit_velocity = 89.1
+orbit_velocity_random = 0.16
+linear_accel = 21.78
+linear_accel_random = 0.12
+linear_accel_curve = SubResource( 20 )
+tangential_accel = 26.73
+tangential_accel_random = 0.13
+scale_random = 0.5
+scale_curve = SubResource( 22 )
+color_ramp = SubResource( 24 )

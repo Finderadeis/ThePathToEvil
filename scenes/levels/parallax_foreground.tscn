@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/environment/parallax/bg_grass_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/environment/parallax/bg_grass_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/environment/parallax/bg_grass_1.png" type="Texture" id=13]
+[ext_resource path="res://vfx/bg_bush_material.tres" type="Material" id=14]
+
+[node name="ParallaxForeground" type="ParallaxBackground"]
+layer = 1
+
+[node name="FR_Bushes" type="ParallaxLayer" parent="."]
+modulate = Color( 0.196078, 0.196078, 0.196078, 1 )
+position = Vector2( 0, 760 )
+motion_scale = Vector2( 1.1, 1 )
+motion_mirroring = Vector2( 3456, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_1" type="Sprite" parent="FR_Bushes"]
+material = ExtResource( 14 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="FR_Bushes"]
+material = ExtResource( 14 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="FR_Bushes"]
+material = ExtResource( 14 )
+position = Vector2( 2304, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}

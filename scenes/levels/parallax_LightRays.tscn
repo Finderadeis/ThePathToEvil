@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/environment/parallax/background_ray.png" type="Texture" id=1]
+
+[node name="Light2D" type="Light2D"]
+texture = ExtResource( 1 )
+energy = 16.0
+range_layer_min = -1

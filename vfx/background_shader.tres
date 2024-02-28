@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://vfx/background_shader_2.tres" type="Shader" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.470968, 1 )
+colors = PoolColorArray( 1, 0.015625, 0.661621, 1, 0.715671, 0.168915, 0.800781, 1, 0.09554, 0.0911865, 0.648438, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 256
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/mix_amount = 0.7
+shader_param/player_pos = 1.0
+shader_param/particle_size = 0.02
+shader_param/particle_count = 90.0
+shader_param/particle_speed = 5.0
+shader_param/color_mod = -0.1
+shader_param/gradient = SubResource( 3 )

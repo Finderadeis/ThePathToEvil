@@ -1,0 +1,55 @@
+[gd_resource type="SpriteFrames" load_steps=31 format=2]
+
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_02.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_03.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_06.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_08.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_09.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_10.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_12.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_00.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_05.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_01.png" type="Texture" id=10]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_11.png" type="Texture" id=11]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_04.png" type="Texture" id=12]
+[ext_resource path="res://assets/enemies/attack/enemy_attack_yellow/enemy_attack_yellow_07.png" type="Texture" id=13]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_02.png" type="Texture" id=15]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_01.png" type="Texture" id=16]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_00.png" type="Texture" id=17]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_03.png" type="Texture" id=18]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_00.png" type="Texture" id=19]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_07.png" type="Texture" id=20]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_04.png" type="Texture" id=21]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_06.png" type="Texture" id=22]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_08.png" type="Texture" id=23]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_06.png" type="Texture" id=24]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_04.png" type="Texture" id=25]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_05.png" type="Texture" id=26]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_05.png" type="Texture" id=27]
+[ext_resource path="res://assets/enemies/enemy_yellow.png" type="Texture" id=28]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_02.png" type="Texture" id=29]
+[ext_resource path="res://assets/enemies/hurt/enemy_hurt_yellow/enemy_hurt_yellow_01.png" type="Texture" id=30]
+[ext_resource path="res://assets/enemies/walk/enemy_walk_yellow/enemy_walk_yellow_03.png" type="Texture" id=31]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "attack",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 30 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 27 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "enemy_hurt",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 16 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]

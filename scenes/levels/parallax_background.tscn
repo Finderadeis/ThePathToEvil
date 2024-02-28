@@ -1,0 +1,2343 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/environment/parallax/bg_grass_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/levels/parallax_fireflies.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/environment/parallax/floortile_01.png" type="Texture" id=5]
+[ext_resource path="res://scenes/levels/parallax_LightRays.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/environment/parallax/layerVariant_1-1.png" type="Texture" id=7]
+[ext_resource path="res://assets/environment/parallax/bg_trees_1-1.png" type="Texture" id=8]
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_3.png" type="Texture" id=9]
+[ext_resource path="res://assets/environment/parallax/layerVariant_1-2.png" type="Texture" id=10]
+[ext_resource path="res://assets/environment/parallax/bg_trees_1-2.png" type="Texture" id=11]
+[ext_resource path="res://assets/environment/parallax/bg_grass_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/environment/parallax/bg_grass_1.png" type="Texture" id=13]
+[ext_resource path="res://vfx/bg_bush_material.tres" type="Material" id=14]
+[ext_resource path="res://vfx/bg_far_material.tres" type="Material" id=15]
+[ext_resource path="res://vfx/bg_floor_material.tres" type="Material" id=16]
+[ext_resource path="res://vfx/bg_near_material.tres" type="Material" id=17]
+[ext_resource path="res://assets/environment/parallax/bg_trees_3-2.png" type="Texture" id=18]
+[ext_resource path="res://assets/environment/parallax/layerVariant_2-2.png" type="Texture" id=19]
+[ext_resource path="res://vfx/bg_near-mid_material.tres" type="Material" id=20]
+[ext_resource path="res://vfx/bg_mid_material.tres" type="Material" id=21]
+[ext_resource path="res://vfx/bg_mid-far_material.tres" type="Material" id=22]
+[ext_resource path="res://vfx/super_duper_far_mat.tres" type="Material" id=23]
+[ext_resource path="res://vfx/bg_bush2_material.tres" type="Material" id=24]
+[ext_resource path="res://vfx/bg_bush3_material.tres" type="Material" id=25]
+[ext_resource path="res://vfx/bg_bush4_material.tres" type="Material" id=26]
+[ext_resource path="res://assets/environment/parallax/bg_trees_trsn_1.png" type="Texture" id=27]
+[ext_resource path="res://assets/environment/parallax/bg_trees_3-1.png" type="Texture" id=28]
+[ext_resource path="res://assets/environment/parallax/bg_trees_2-1.png" type="Texture" id=29]
+[ext_resource path="res://assets/environment/parallax/layerVariant_3-1.png" type="Texture" id=30]
+[ext_resource path="res://assets/environment/parallax/bg_trees_2-2.png" type="Texture" id=31]
+[ext_resource path="res://assets/environment/parallax/layerVariant_3-2.png" type="Texture" id=32]
+[ext_resource path="res://assets/environment/parallax/layerVariant_2-1.png" type="Texture" id=33]
+[ext_resource path="res://assets/environment/parallax/layerTransition_1-2.png" type="Texture" id=34]
+[ext_resource path="res://assets/environment/parallax/layerTransition_2-3.png" type="Texture" id=35]
+[ext_resource path="res://assets/environment/parallax/bg_trees_trsn_2.png" type="Texture" id=36]
+[ext_resource path="res://assets/environment/parallax/bg_trees_1-1normal.png" type="Texture" id=37]
+[ext_resource path="res://assets/environment/parallax/bg_trees_1-2normal.png" type="Texture" id=38]
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_3normal.png" type="Texture" id=39]
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_1normal.png" type="Texture" id=40]
+[ext_resource path="res://assets/environment/parallax/layerVariant_bush_2normal.png" type="Texture" id=41]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.418103, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.3125, 0.3125, 0.3125, 1 )
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
+width = 1920
+height = 300
+fill_from = Vector2( 0, 1 )
+fill_to = Vector2( 0, 0 )
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[node name="ParallaxBackground_1" type="ParallaxBackground"]
+layer = -1
+
+[node name="BG_Last" type="ParallaxLayer" parent="."]
+light_mask = 16
+z_index = 100
+motion_mirroring = Vector2( 1920, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="BG_Last"]
+light_mask = 16
+material = ExtResource( 23 )
+texture = SubResource( 2 )
+centered = false
+
+[node name="Floor" type="ParallaxLayer" parent="."]
+light_mask = 16
+position = Vector2( 0, 480 )
+motion_mirroring = Vector2( 2400, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FloorTile_back" type="Sprite" parent="Floor"]
+light_mask = 16
+material = ExtResource( 17 )
+position = Vector2( 0, -228 )
+texture = ExtResource( 5 )
+centered = false
+flip_v = true
+region_enabled = true
+region_rect = Rect2( 800, 600, 2400, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FloorTile_front" type="Sprite" parent="Floor"]
+light_mask = 16
+material = ExtResource( 16 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 800, 600, 2400, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_5_Trees" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 16
+position = Vector2( -655, 59 )
+motion_scale = Vector2( 0.6, 1 )
+
+[node name="BG_01" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_02" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 384, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_03" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 768, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_04" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_05" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1536, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_06" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1920, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_07" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 2304, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_08" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 2688, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_09" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 3072, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_10" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 3456, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_11" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 3840, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_12" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 4224, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_13" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 4608, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_14" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 4992, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_15" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 5376, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_16" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 5760, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_17" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 6144, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_18" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 6528, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_19" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 6912, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_20" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 7296, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Transition_1" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 7680, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 34 )
+centered = false
+
+[node name="BG_21" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 8064, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_22" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 8448, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_23" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 8832, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_24" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 9216, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_25" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 9600, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_26" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 9984, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_27" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 10368, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_28" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 10752, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_29" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 11136, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_30" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 11520, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_31" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 11904, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_32" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 12288, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_33" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 12672, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_34" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 13056, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_35" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 13440, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_36" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 13824, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_37" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 14208, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_38" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 14592, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_39" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 14976, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_40" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 15360, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_41" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 15744, 5 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="Transition_2" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 16128, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 35 )
+centered = false
+
+[node name="BG_43" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 16512, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_44" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 16896, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_45" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 17280, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_46" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 17664, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_47" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 18048, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_48" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 18432, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_49" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 18816, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_50" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 19200, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_51" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 19584, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_52" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 19968, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_53" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 20352, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_54" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 20736, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_55" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 21120, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_56" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 21504, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_57" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 21888, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_58" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 22272, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_59" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 22656, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_60" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 23040, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_61" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 23424, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_62" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 23808, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_63" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 24192, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_64" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 24576, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_65" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 24960, -2 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_66" type="Sprite" parent="BG_5_Trees"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 25344, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_5_Bushes" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 16
+position = Vector2( 0, 190 )
+motion_scale = Vector2( 0.65, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Bush_1" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 4.76837e-07, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 192, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 384, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4_1" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 576, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_5_2" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 768, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_6_3" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 960, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_7_2" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_8_3" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1344, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_9_1" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1536, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_10_2" type="Sprite" parent="BG_5_Bushes"]
+light_mask = 16
+material = ExtResource( 15 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+light_mask = 8
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.45098 )
+self_modulate = Color( 0.498039, 0.658824, 1, 1 )
+light_mask = 8
+position = Vector2( 999, 30 )
+texture = SubResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0.265, -0.295, 2000, 511.124 )
+
+[node name="BG_4_Trees" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 8
+position = Vector2( -655, 0 )
+motion_scale = Vector2( 0.7, 1 )
+
+[node name="BG_01" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_02" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 576, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_03" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_04" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_05" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 2304, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_06" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 2880, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_07" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 3456, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_08" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 4032, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_09" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 4608, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_10" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 5184, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BG_11" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 5760, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="BG_12" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 6336, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="Transition_1" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 6912, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+centered = false
+
+[node name="BG_13" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 7488, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_14" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 8064, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_15" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 8640, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_16" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 9216, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_17" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 9792, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_18" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 10368, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_19" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 10944, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_20" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 11520, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_21" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 12096, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_22" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 12672, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_23" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 13248, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_24" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 13824, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_25" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 14400, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="BG_26" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 14976, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="BG_27" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 15552, 8 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 33 )
+centered = false
+
+[node name="Transition_2" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 16128, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 35 )
+centered = false
+
+[node name="BG_28" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 16704, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_29" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 17280, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_30" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 17856, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_31" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 18432, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_32" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 19008, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_33" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 19584, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_34" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 20160, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_35" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 20736, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_36" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 21312, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_37" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 21888, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_38" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 22464, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_39" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 23040, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_40" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 23616, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_41" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 24192, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_42" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 24768, -4 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 30 )
+centered = false
+
+[node name="BG_43" type="Sprite" parent="BG_4_Trees"]
+light_mask = 8
+material = ExtResource( 22 )
+position = Vector2( 25344, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 32 )
+centered = false
+
+[node name="BG_4_Bushes" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 8
+position = Vector2( 0, 197 )
+motion_scale = Vector2( 0.75, 1 )
+motion_mirroring = Vector2( 2016, 0 )
+
+[node name="Bush_1" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 4.76837e-07, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 288, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 576, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4_1" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 864, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_5_2" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_6_3" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 1440, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_7_2" type="Sprite" parent="BG_4_Bushes"]
+light_mask = 8
+material = ExtResource( 26 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_Fog" type="ParallaxLayer" parent="."]
+light_mask = 16
+motion_scale = Vector2( 0.773, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="BG_Fog"]
+modulate = Color( 1, 1, 1, 0.498039 )
+self_modulate = Color( 0.372549, 0.14902, 0.721569, 1 )
+light_mask = 16
+position = Vector2( 0, -76 )
+texture = SubResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 500 )
+
+[node name="Fireflies_2" type="ParallaxLayer" parent="."]
+modulate = Color( 1, 1, 1, 0.509804 )
+light_mask = 4
+position = Vector2( 0, 112 )
+scale = Vector2( 0.5, 0.5 )
+motion_scale = Vector2( 0.775, 1 )
+
+[node name="parallax_fireflies" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+amount = 200
+
+[node name="parallax_fireflies2" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 2880, 200 )
+amount = 190
+
+[node name="parallax_fireflies3" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 4800, 200 )
+amount = 180
+
+[node name="parallax_fireflies4" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 6720, 200 )
+amount = 170
+
+[node name="parallax_fireflies5" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 8640, 200 )
+amount = 160
+
+[node name="parallax_fireflies6" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 10560, 200 )
+amount = 150
+
+[node name="parallax_fireflies7" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 12480, 200 )
+amount = 140
+
+[node name="parallax_fireflies8" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 14400, 200 )
+amount = 130
+
+[node name="parallax_fireflies9" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 16354, 200 )
+amount = 120
+
+[node name="parallax_fireflies10" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 18274, 200 )
+amount = 110
+
+[node name="parallax_fireflies11" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 20194, 200 )
+amount = 100
+
+[node name="parallax_fireflies12" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 22114, 200 )
+amount = 90
+
+[node name="parallax_fireflies13" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 24034, 200 )
+amount = 80
+
+[node name="parallax_fireflies14" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 25954, 200 )
+amount = 70
+
+[node name="parallax_fireflies15" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 27874, 200 )
+amount = 60
+
+[node name="parallax_fireflies16" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 29794, 200 )
+amount = 50
+
+[node name="parallax_fireflies17" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 31714, 200 )
+amount = 40
+
+[node name="parallax_fireflies18" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 33634, 200 )
+amount = 30
+
+[node name="parallax_fireflies19" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 35554, 200 )
+amount = 20
+
+[node name="parallax_fireflies20" parent="Fireflies_2" instance=ExtResource( 4 )]
+light_mask = 4
+position = Vector2( 37474, 200 )
+amount = 10
+
+[node name="BG_3_Trees" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 4
+position = Vector2( -655, -147 )
+motion_scale = Vector2( 0.8, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_01" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="BG_02" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 960, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="BG_03" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 1920, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="BG_04" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 2880, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="BG_05" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 3840, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="BG_06" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 4800, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="BG_07" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 5760, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="BG_08" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 6720, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="Transition_1" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 7680, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 27 )
+centered = false
+
+[node name="BG_09" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 8640, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+centered = false
+
+[node name="BG_11" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 9600, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="BG_10" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 10560, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+centered = false
+
+[node name="BG_12" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 11520, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="BG_13" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 12480, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+centered = false
+
+[node name="BG_14" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 13440, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="BG_15" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 14400, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+centered = false
+
+[node name="BG_16" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 15360, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="Transition_2" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 16320, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="BG_17" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 17280, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="BG_18" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 18240, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="BG_19" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 19200, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="BG_20" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 20160, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="BG_21" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 21120, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="BG_22" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 22080, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="BG_23" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 23040, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="BG_24" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 24000, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="BG_25" type="Sprite" parent="BG_3_Trees"]
+light_mask = 4
+material = ExtResource( 21 )
+position = Vector2( 24960, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="LightRays_2" type="ParallaxLayer" parent="."]
+light_mask = 4
+position = Vector2( 526, 0 )
+motion_scale = Vector2( 0.825, 1 )
+
+[node name="Parallax_LightRays" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 1588, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 3.0
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays2" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 3441, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 1.52
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays3" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 5271, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 3.0
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays4" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 6693, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 1.52
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays5" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 8008, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 1.12
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays6" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 10056, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 3.0
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays7" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 12597, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 1.52
+range_item_cull_mask = 4
+
+[node name="Parallax_LightRays8" parent="LightRays_2" instance=ExtResource( 6 )]
+position = Vector2( 13729, 180 )
+scale = Vector2( 0.5, 0.5 )
+energy = 1.0
+range_item_cull_mask = 4
+
+[node name="BG_3_Bushes" type="ParallaxLayer" parent="."]
+show_behind_parent = true
+light_mask = 4
+position = Vector2( 0, 219 )
+motion_scale = Vector2( 0.85, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Bush_1" type="Sprite" parent="BG_3_Bushes"]
+light_mask = 4
+material = ExtResource( 25 )
+position = Vector2( 4.76837e-07, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_3_Bushes"]
+light_mask = 4
+material = ExtResource( 25 )
+position = Vector2( 384, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_3_Bushes"]
+light_mask = 4
+material = ExtResource( 25 )
+position = Vector2( 768, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4_1" type="Sprite" parent="BG_3_Bushes"]
+light_mask = 4
+material = ExtResource( 25 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_5_2" type="Sprite" parent="BG_3_Bushes"]
+light_mask = 4
+material = ExtResource( 25 )
+position = Vector2( 1536, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_2_Trees" type="ParallaxLayer" parent="."]
+modulate = Color( 0.862745, 0.862745, 0.862745, 1 )
+light_mask = 2
+position = Vector2( -655, -271 )
+motion_scale = Vector2( 0.9, 1 )
+
+[node name="BG_01" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_02" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 1344, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_03" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 2688, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_04" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 4032, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_05" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 5376, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 8 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_06" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 6720, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 11 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Transition_1" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 8059, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 27 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_07" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 9403, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_08" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 10747, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 31 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_09" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 12091, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_10" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 13435, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 31 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_11" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 14779, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Transition_2" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 16123, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_12" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 17467, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_13" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 18811, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_14" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 20155, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_15" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 21499, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_16" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 22843, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_17" type="Sprite" parent="BG_2_Trees"]
+light_mask = 2
+material = ExtResource( 20 )
+position = Vector2( 24187, 0 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LightRays_1" type="ParallaxLayer" parent="."]
+light_mask = 2
+motion_scale = Vector2( 0.925, 1 )
+
+[node name="Parallax_LightRays_01" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 2335, 180 )
+energy = 1.79
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_02" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 3557, 180 )
+energy = 1.92
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_03" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 5271, 180 )
+energy = 2.33
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_04" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 6693, 180 )
+energy = 1.79
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_05" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 8155, 180 )
+energy = 1.52
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_06" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 10122, 180 )
+energy = 0.98
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_07" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 12208, 180 )
+energy = 1.39
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_08" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 14010, 180 )
+energy = 1.39
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_09" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 15872, 230 )
+energy = 1.79
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_10" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 18105, 209 )
+energy = 1.79
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Parallax_LightRays_11" parent="LightRays_1" instance=ExtResource( 6 )]
+position = Vector2( 20055, 216 )
+energy = 1.79
+range_item_cull_mask = 2
+shadow_item_cull_mask = 2
+
+[node name="Fireflies_1" type="ParallaxLayer" parent="."]
+light_mask = 2
+motion_scale = Vector2( 0.95, 1 )
+
+[node name="parallax_fireflies" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+amount = 200
+
+[node name="parallax_fireflies2" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 2880, 200 )
+amount = 180
+
+[node name="parallax_fireflies3" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 4800, 200 )
+amount = 160
+
+[node name="parallax_fireflies4" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 6720, 200 )
+amount = 140
+
+[node name="parallax_fireflies5" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 8640, 200 )
+amount = 120
+
+[node name="parallax_fireflies6" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 10560, 200 )
+amount = 100
+
+[node name="parallax_fireflies7" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 12480, 200 )
+amount = 80
+
+[node name="parallax_fireflies8" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 14400, 200 )
+amount = 60
+
+[node name="parallax_fireflies9" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 16320, 200 )
+amount = 40
+
+[node name="parallax_fireflies10" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 18240, 200 )
+amount = 20
+
+[node name="parallax_fireflies11" parent="Fireflies_1" instance=ExtResource( 4 )]
+light_mask = 2
+position = Vector2( 20160, 200 )
+amount = 10
+
+[node name="BG_2_Bushes" type="ParallaxLayer" parent="."]
+modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
+position = Vector2( 0, 249 )
+motion_scale = Vector2( 0.95, 1 )
+motion_mirroring = Vector2( 2400, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_1" type="Sprite" parent="BG_2_Bushes"]
+material = ExtResource( 24 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_2_Bushes"]
+material = ExtResource( 24 )
+position = Vector2( 480, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_2_Bushes"]
+material = ExtResource( 24 )
+position = Vector2( 960, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4_1" type="Sprite" parent="BG_2_Bushes"]
+material = ExtResource( 24 )
+position = Vector2( 1440, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_5_2" type="Sprite" parent="BG_2_Bushes"]
+material = ExtResource( 24 )
+position = Vector2( 1920, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_1_Trees" type="ParallaxLayer" parent="."]
+position = Vector2( -655, -379 )
+
+[node name="BG_01" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 8 )
+normal_map = ExtResource( 37 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_02" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 11 )
+normal_map = ExtResource( 38 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_03" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 3456, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 8 )
+normal_map = ExtResource( 37 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_04" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 5184, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 11 )
+normal_map = ExtResource( 38 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_Transition_1" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 6912, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 27 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_07" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 8640, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_08" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 10368, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 31 )
+centered = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BG_09" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 12096, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 29 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_10" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 13824, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 31 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_Transition_2" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 15552, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 36 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_11" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 17280, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_12" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 19008, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_13" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 20736, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_14" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 22464, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 18 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_15" type="Sprite" parent="BG_1_Trees"]
+material = ExtResource( 17 )
+position = Vector2( 24192, 0 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 28 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_1_Bushes_1" type="ParallaxLayer" parent="."]
+position = Vector2( 0, 284 )
+motion_mirroring = Vector2( 2304, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_1" type="Sprite" parent="BG_1_Bushes_1"]
+material = ExtResource( 14 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_1_Bushes_1"]
+material = ExtResource( 14 )
+position = Vector2( 576, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_1_Bushes_1"]
+material = ExtResource( 14 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4" type="Sprite" parent="BG_1_Bushes_1"]
+material = ExtResource( 14 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BG_1_Bushes_2" type="ParallaxLayer" parent="."]
+position = Vector2( 0, 295 )
+motion_mirroring = Vector2( 2304, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_1" type="Sprite" parent="BG_1_Bushes_2"]
+material = ExtResource( 14 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 40 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_2" type="Sprite" parent="BG_1_Bushes_2"]
+material = ExtResource( 14 )
+position = Vector2( 576, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 41 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_3" type="Sprite" parent="BG_1_Bushes_2"]
+material = ExtResource( 14 )
+position = Vector2( 1152, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 9 )
+normal_map = ExtResource( 39 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bush_4" type="Sprite" parent="BG_1_Bushes_2"]
+material = ExtResource( 14 )
+position = Vector2( 1728, 0 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 41 )
+centered = false
+__meta__ = {
+"_edit_group_": true
+}

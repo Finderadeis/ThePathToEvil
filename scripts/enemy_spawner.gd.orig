@@ -1,0 +1,82 @@
+extends Node2D
+
+# Handles Spawning and Deleting enemies
+
+# signals
+signal enemy_destroyed(ult_perc)
+
+# export variables, variable type and value are optional
+export (PackedScene) var enemy_scene
+<<<<<<< working copy
+export (PackedScene) var strong_enemy_scene
+export (float) var start_spawnrate_per_second = 2.0
+export (float) var max_spawnrate_per_second = 5.5
+export (int) var start_enemy_limit = 6
+export (int) var max_enemy_limit = 6
+=======
+export (float) var min_spawn_time = 2
+export (float) var max_spawn_time = 5.5
+>>>>>>> merge rev
+
+# public / private variables
+var time_since_last_spawn = 0.0
+var rng = RandomNumberGenerator.new()
+var enemy_circle_direction = 1.0
+var current_enemy_count = 0
+var current_max_enemy_count
+var current_spawnrate
+
+
+# Godot callback methods
+func _init():
+	pass
+
+
+func _ready():
+	rng.randomize()
+	current_max_enemy_count = start_enemy_limit
+	current_spawnrate = start_spawnrate_per_second
+
+
+func _physics_process(delta):
+	time_since_last_spawn += delta
+	print(time_since_last_spawn)
+	if time_since_last_spawn > 1.0/current_spawnrate:
+		spawn_enemy()
+		time_since_last_spawn = 0.0
+
+
+func spawn_enemy():
+<<<<<<< working copy
+	if current_enemy_count >= current_max_enemy_count:
+		return
+		
+	var enemy = enemy_scene.instance()
+	current_enemy_count += 1
+	enemy.connect("died", self, "_on_Enemy_died")
+	enemy.position.y = rng.randf_range($TopConstraint.position.y, $BottomConstraint.position.y)
+	enemy.position.x = $"../Player".get_global_position().x
+	enemy.last_player_position = $"../Player".get_global_position()
+	enemy.circle_direction = enemy_circle_direction
+	enemy_circle_direction *= -1.0
+	$YSort.add_child(enemy)
+	$"../../Label".text += "\n enemy spawned"
+=======
+	var new_enemy = enemy_scene.instance()
+	new_enemy.connect("enemy_died", self, "_on_Enemy_enemy_died")
+	new_enemy.position.y = rng.randf_range($TopConstraint.position.y, $BottomConstraint.position.y)
+	new_enemy.position.x = $"../Player".get_global_position().x
+	new_enemy.last_player_position = $"../Player".get_global_position()
+	$YSort.add_child(new_enemy)
+>>>>>>> merge rev
+
+
+func _on_Enemy_enemy_died(enemy, ult_perc):
+	emit_signal("enemy_destroyed", ult_perc)
+	$YSort.remove_child(enemy)
+	enemy.queue_free()
+	current_enemy_count -= 1
+
+
+func _on_Player_moved(pos):
+	pass # Replace with function body.

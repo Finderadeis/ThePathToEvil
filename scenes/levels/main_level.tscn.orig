@@ -1,0 +1,803 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://scenes/levels/parallax_background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/environment/foreground_tree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/environment/damage_area_big.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/environment/destructible_object.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/environment/indestructible_object_3rd.tscn" type="PackedScene" id=5]
+[ext_resource path="res://vfx/background_shader.tres" type="Material" id=6]
+[ext_resource path="res://scenes/environment/indestructible_object_lightFix.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/environment/indestructible_object_2nd_lightFix.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/environment/damage_area_big_wide.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/environment/indestructible_object_2nd.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/environment/damage_area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/environment/tree_01.png" type="Texture" id=12]
+[ext_resource path="res://assets/environment/tree_01_normal.png" type="Texture" id=13]
+[ext_resource path="res://scenes/environment/damage_area_narrow.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/environment/indestructible_object.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/environment/indestructible_object_3rd_lightFix.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/environment/moving_object_short.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/environment/grass.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/environment/moving_object.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/environment/moving_object_2nd.tscn" type="PackedScene" id=20]
+
+[node name="MainLevel" type="YSort"]
+position = Vector2( 81, 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 435.0, 1091.0 ]
+}
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( -884, 0 )
+
+[node name="IndestructibleObject" type="YSort" parent="YSort"]
+position = Vector2( 884, 0 )
+
+[node name="IndestructibleObject3rd4" parent="YSort/IndestructibleObject" instance=ExtResource( 16 )]
+position = Vector2( 4459, 1096 )
+
+[node name="IndestructibleObject4" parent="YSort/IndestructibleObject" instance=ExtResource( 7 )]
+position = Vector2( 5105, 657 )
+
+[node name="IndestructibleObject5" parent="YSort/IndestructibleObject" instance=ExtResource( 15 )]
+position = Vector2( 15423, 554 )
+
+[node name="IndestructibleObject2nd5" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 14603, 1091 )
+
+[node name="IndestructibleObject2nd6" parent="YSort/IndestructibleObject" instance=ExtResource( 8 )]
+position = Vector2( 14025, 1084 )
+
+[node name="IndestructibleObject3rd5" parent="YSort/IndestructibleObject" instance=ExtResource( 5 )]
+position = Vector2( 12259, 545 )
+
+[node name="IndestructibleObject3rd6" parent="YSort/IndestructibleObject" instance=ExtResource( 16 )]
+position = Vector2( 12060, 1093 )
+
+[node name="IndestructibleObject6" parent="YSort/IndestructibleObject" instance=ExtResource( 7 )]
+position = Vector2( 15143, 1075 )
+
+[node name="IndestructibleObject7" parent="YSort/IndestructibleObject" instance=ExtResource( 15 )]
+position = Vector2( 17722, 662 )
+
+[node name="IndestructibleObject2nd7" parent="YSort/IndestructibleObject" instance=ExtResource( 8 )]
+position = Vector2( 19514, 880 )
+
+[node name="IndestructibleObject2nd8" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 19509, 807 )
+
+[node name="IndestructibleObject8" parent="YSort/IndestructibleObject" instance=ExtResource( 7 )]
+position = Vector2( 17604, 665 )
+
+[node name="IndestructibleObject" parent="YSort/IndestructibleObject" instance=ExtResource( 15 )]
+position = Vector2( 1038, 810 )
+
+[node name="IndestructibleObject2nd" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 2725, 662 )
+
+[node name="IndestructibleObject3rd" parent="YSort/IndestructibleObject" instance=ExtResource( 5 )]
+position = Vector2( 2173, 1008 )
+
+[node name="IndestructibleObject3rd2" parent="YSort/IndestructibleObject" instance=ExtResource( 16 )]
+position = Vector2( 2176, 1079 )
+
+[node name="IndestructibleObject2" parent="YSort/IndestructibleObject" instance=ExtResource( 7 )]
+position = Vector2( 1118, 759 )
+
+[node name="IndestructibleObject2nd2" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 3598, 831 )
+
+[node name="IndestructibleObject2nd3" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 7630, 924 )
+
+[node name="IndestructibleObject3rd3" parent="YSort/IndestructibleObject" instance=ExtResource( 5 )]
+position = Vector2( 4487, 1031 )
+
+[node name="IndestructibleObject2nd4" parent="YSort/IndestructibleObject" instance=ExtResource( 8 )]
+position = Vector2( 3686, 787 )
+
+[node name="IndestructibleObject3" parent="YSort/IndestructibleObject" instance=ExtResource( 15 )]
+position = Vector2( 3512, 889 )
+
+[node name="IndestructibleObject2nd9" parent="YSort/IndestructibleObject" instance=ExtResource( 10 )]
+position = Vector2( 11429, 655 )
+scale = Vector2( 0.9, 1.2 )
+
+[node name="DamageArea" type="YSort" parent="YSort"]
+
+[node name="DamageArea1" parent="YSort/DamageArea" instance=ExtResource( 11 )]
+position = Vector2( 8523, 557 )
+
+[node name="DamageArea2" parent="YSort/DamageArea" instance=ExtResource( 11 )]
+position = Vector2( 8068, 997 )
+
+[node name="DamageArea_Big3" parent="YSort/DamageArea" instance=ExtResource( 3 )]
+position = Vector2( 16384, 778 )
+
+[node name="DamageArea_Narrow" parent="YSort/DamageArea" instance=ExtResource( 14 )]
+position = Vector2( 9348, 780 )
+
+[node name="DamageArea_Narrow2" parent="YSort/DamageArea" instance=ExtResource( 14 )]
+position = Vector2( 9804, 803 )
+
+[node name="DamageArea_Narrow3" parent="YSort/DamageArea" instance=ExtResource( 14 )]
+position = Vector2( 13625, 766 )
+
+[node name="DamageArea_Narrow4" parent="YSort/DamageArea" instance=ExtResource( 14 )]
+position = Vector2( 14022, 758 )
+
+[node name="DamageArea_Big_Wide" parent="YSort/DamageArea" instance=ExtResource( 9 )]
+position = Vector2( 19512, 532 )
+
+[node name="DamageArea_Big_Wide3" parent="YSort/DamageArea" instance=ExtResource( 9 )]
+position = Vector2( 22771, 539 )
+
+[node name="DamageArea_Big5" parent="YSort/DamageArea" instance=ExtResource( 3 )]
+position = Vector2( 22777, 1035 )
+
+[node name="DamageArea_Big2" parent="YSort/DamageArea" instance=ExtResource( 3 )]
+position = Vector2( 21644, 1034 )
+
+[node name="DamageArea_Big4" parent="YSort/DamageArea" instance=ExtResource( 3 )]
+position = Vector2( 21631, 502 )
+
+[node name="DamageArea_Big_Wide2" parent="YSort/DamageArea" instance=ExtResource( 9 )]
+position = Vector2( 22424, 1014 )
+
+[node name="DamageArea_Big6" parent="YSort/DamageArea" instance=ExtResource( 3 )]
+position = Vector2( 22400, 513 )
+
+[node name="DamageArea3" parent="YSort/DamageArea" instance=ExtResource( 11 )]
+position = Vector2( 17477, 513 )
+
+[node name="DamageArea4" parent="YSort/DamageArea" instance=ExtResource( 11 )]
+position = Vector2( 17815, 1038 )
+
+[node name="DamageArea_Big_Wide4" parent="YSort/DamageArea" instance=ExtResource( 9 )]
+position = Vector2( 12762, 757 )
+
+[node name="DestructibleObjects" type="YSort" parent="YSort"]
+position = Vector2( 0, 40 )
+
+[node name="DestructibleObject1" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1474, 995 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject2" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1502, 898 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject3" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1471, 505 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject4" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1502, 601 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject5" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1948, 505 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject6" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2167, 513 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject7" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3070, 512 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject8" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2348, 997 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject9" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2985, 515 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject10" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3502, 1002 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject11" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3183, 519 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject12" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3417, 1003 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject13" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4119, 565 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject15" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4239, 697 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject16" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4786, 1033 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject17" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4211, 569 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject18" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4292, 642 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject20" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4673, 956 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject21" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5727, 1041 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject22" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4762, 873 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject23" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5817, 1040 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject24" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5519, 640 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject25" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6682, 528 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject26" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5430, 646 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject27" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6701, 695 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject28" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5534, 555 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject29" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9658, 1047 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject30" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6690, 894 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject31" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8446, 654 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject32" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9554, 1054 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject33" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9450, 1053 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject34" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2439, 999 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject35" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2539, 996 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject36" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3287, 515 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject37" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4305, 562 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject38" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4165, 651 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject39" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4772, 944 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject40" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5642, 1037 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject41" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6703, 607 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject42" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5439, 553 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject43" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8176, 909 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject44" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6670, 1009 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject45" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3335, 1009 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject46" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 3594, 1000 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject47" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4690, 1025 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject48" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 4604, 1027 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject49" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5818, 945 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject50" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5729, 945 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject51" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 5354, 554 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject52" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 6687, 791 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject53" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9356, 1042 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject54" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 7973, 903 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject55" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 7893, 994 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject56" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8538, 666 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject57" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8641, 655 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject58" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8690, 572 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject59" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9355, 538 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject60" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16623, 500 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject62" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12734, 513 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject63" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16530, 509 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject64" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12699, 1040 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject65" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16261, 998 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject66" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16709, 496 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject67" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13717, 571 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject68" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13882, 561 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject70" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13960, 530 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject71" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 10737, 973 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject74" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 10789, 1051 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject76" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 10662, 1049 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject80" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9819, 535 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject81" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9575, 530 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject82" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9449, 548 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject85" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13709, 975 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject86" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12879, 514 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject87" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 11231, 515 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject88" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12571, 1040 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject89" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 11425, 513 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject90" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 11370, 613 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject91" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16358, 1017 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject92" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13880, 1018 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject93" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16450, 1034 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject96" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14489, 519 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject97" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14525, 917 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject98" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14486, 1010 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject99" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 15122, 1045 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject100" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 15150, 972 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject101" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 15271, 1044 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject102" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14525, 616 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject103" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1504, 702 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject104" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8066, 894 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject105" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14526, 823 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject106" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 1502, 805 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject107" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8244, 993 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject108" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 8378, 580 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject109" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9707, 522 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject111" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 9784, 1049 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject114" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 10607, 977 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject115" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 10548, 1047 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject117" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 11278, 621 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject118" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 11324, 515 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject119" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16443, 510 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject120" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 16172, 1026 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject121" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12806, 513 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject122" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 12643, 1040 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject123" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13788, 1029 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject124" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13810, 531 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject125" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 15224, 970 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject126" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 15196, 1044 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject128" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 13956, 985 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject131" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 14526, 727 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 2051, 508 )
+
+[node name="DestructibleObject110" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20763, 508 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject112" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20799, 906 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject113" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20760, 999 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject116" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20799, 605 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject127" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20800, 812 )
+collectable_spawn_chance = 10.0
+
+[node name="DestructibleObject132" parent="YSort/DestructibleObjects" instance=ExtResource( 4 )]
+position = Vector2( 20800, 716 )
+collectable_spawn_chance = 10.0
+
+[node name="grass7" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17507, 568 )
+
+[node name="grass8" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17608, 554 )
+
+[node name="grass9" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17650, 465 )
+
+[node name="grass" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17656, 994 )
+
+[node name="grass2" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17717, 911 )
+
+[node name="grass3" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17822, 899 )
+
+[node name="grass4" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17939, 906 )
+
+[node name="grass5" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 18004, 996 )
+
+[node name="grass10" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17404, 551 )
+
+[node name="grass6" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 17315, 464 )
+
+[node name="grass11" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 18435, 459 )
+
+[node name="grass12" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 18527, 459 )
+
+[node name="grass13" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 18623, 459 )
+
+[node name="grass14" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19298, 562 )
+
+[node name="grass15" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19172, 463 )
+
+[node name="grass16" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19755, 463 )
+
+[node name="grass17" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19857, 465 )
+
+[node name="grass18" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19731, 570 )
+
+[node name="grass19" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19439, 989 )
+
+[node name="grass20" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19550, 991 )
+
+[node name="grass21" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 19265, 462 )
+
+[node name="grass22" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 21893, 453 )
+
+[node name="grass23" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 21980, 451 )
+
+[node name="grass24" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 22069, 458 )
+
+[node name="grass25" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 22159, 460 )
+
+[node name="grass26" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 21882, 989 )
+
+[node name="grass27" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 22080, 993 )
+
+[node name="grass28" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 21974, 996 )
+
+[node name="grass29" parent="YSort/DestructibleObjects" instance=ExtResource( 18 )]
+position = Vector2( 22165, 987 )
+
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="StartBlockTree" type="Sprite" parent="YSort/Trees"]
+material = ExtResource( 6 )
+position = Vector2( 940, 927 )
+texture = ExtResource( 12 )
+normal_map = ExtResource( 13 )
+offset = Vector2( 0, -300 )
+
+[node name="foreground_tree" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 3626, 544 )
+
+[node name="foreground_tree2" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 6046, 562 )
+scale = Vector2( 1.2, 0.9 )
+
+[node name="foreground_tree3" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 8073, 670 )
+scale = Vector2( 0.9, 0.8 )
+
+[node name="IndestructibleObject" parent="YSort/Trees" instance=ExtResource( 15 )]
+position = Vector2( 10946, 878 )
+scale = Vector2( 1.1, 0.8 )
+
+[node name="foreground_tree4" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 10876, 801 )
+scale = Vector2( 1.1, 0.8 )
+
+[node name="foreground_tree5" parent="YSort/Trees" instance=ExtResource( 2 )]
+position = Vector2( 11938, 930 )
+scale = Vector2( 0.9, 1.2 )
+
+[node name="MovingObject" type="YSort" parent="YSort"]
+
+[node name="moving_object2" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 15074, 623 )
+
+[node name="moving_object3" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 15301, 620 )
+
+[node name="moving_object_2nd2" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 16431, 922 )
+rotation = -1.55529
+
+[node name="moving_object_2nd" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 16558, 644 )
+rotation = -1.56262
+
+[node name="moving_object_short" parent="YSort/MovingObject" instance=ExtResource( 17 )]
+position = Vector2( 17452, 771 )
+
+[node name="moving_object_short2" parent="YSort/MovingObject" instance=ExtResource( 17 )]
+position = Vector2( 17875, 786 )
+rotation = -3.1401
+
+[node name="moving_object_2nd3" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 20388, 951 )
+rotation = -1.24365
+
+[node name="moving_object_2nd4" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 20406, 620 )
+rotation = -1.76742
+
+[node name="moving_object" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 19360, 911 )
+rotation = -2.77754
+
+[node name="moving_object4" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 19641, 907 )
+rotation = 2.78307
+
+[node name="moving_object5" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 21366, 562.999 )
+rotation = -0.90722
+
+[node name="moving_object6" parent="YSort/MovingObject" instance=ExtResource( 19 )]
+position = Vector2( 21372, 972 )
+rotation = -2.27953
+
+[node name="moving_object_2nd6" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 22504, 640 )
+rotation = -1.73139
+
+[node name="moving_object_2nd5" parent="YSort/MovingObject" instance=ExtResource( 20 )]
+position = Vector2( 22822, 885 )
+rotation = -1.36539
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]

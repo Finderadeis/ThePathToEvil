@@ -1,0 +1,521 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/cursor_particles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/enemies/enemy_spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ui/options_screen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/ui/hud/dashicon_03.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/hud/ultimateicon_00.png" type="Texture" id=7]
+[ext_resource path="res://vfx/destructible_object_particles_mat.tres" type="Material" id=8]
+[ext_resource path="res://vfx/bg_floor_material.tres" type="Material" id=9]
+[ext_resource path="res://scenes/ui/tutorial.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sound/theme.wav" type="AudioStream" id=11]
+[ext_resource path="res://scenes/ui/pause_screen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/ui/hud/healthbar_05.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/hud/healthbar_04.png" type="Texture" id=14]
+[ext_resource path="res://scenes/ui/death_screen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/ui/keybindings_screen.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/ui/hud/healthbar_01.png" type="Texture" id=17]
+[ext_resource path="res://assets/ui/hud/healthbar_00.png" type="Texture" id=18]
+[ext_resource path="res://assets/ui/hud/healthbar_03.png" type="Texture" id=19]
+[ext_resource path="res://assets/ui/hud/dashicon_01.png" type="Texture" id=20]
+[ext_resource path="res://assets/ui/hud/dashicon_02.png" type="Texture" id=21]
+[ext_resource path="res://assets/ui/hud/dashicon_00.png" type="Texture" id=22]
+[ext_resource path="res://assets/ui/hud/healthbar_02.png" type="Texture" id=23]
+[ext_resource path="res://assets/ui/hud/ultimateicon_01.png" type="Texture" id=24]
+[ext_resource path="res://assets/ui/hud/ultimateicon_02.png" type="Texture" id=25]
+[ext_resource path="res://scripts/ui/hud.gd" type="Script" id=26]
+[ext_resource path="res://vfx/world_environment.tres" type="Environment" id=27]
+[ext_resource path="res://scenes/levels/level.tscn" type="PackedScene" id=28]
+[ext_resource path="res://vfx/bg_near_material.tres" type="Material" id=29]
+[ext_resource path="res://vfx/bg_bush_material.tres" type="Material" id=30]
+[ext_resource path="res://scenes/ui/scene_transition.tscn" type="PackedScene" id=31]
+[ext_resource path="res://scenes/ui/win_screen.tscn" type="PackedScene" id=32]
+[ext_resource path="res://vfx/bg_near-mid_material.tres" type="Material" id=33]
+[ext_resource path="res://vfx/bg_mid_material.tres" type="Material" id=34]
+[ext_resource path="res://vfx/bg_mid-far_material.tres" type="Material" id=35]
+[ext_resource path="res://vfx/props_mat.tres" type="Material" id=36]
+[ext_resource path="res://vfx/super_duper_far_mat.tres" type="Material" id=37]
+[ext_resource path="res://vfx/bg_far_material.tres" type="Material" id=38]
+[ext_resource path="res://assets/ui/hud/health_alert01.png" type="Texture" id=39]
+[ext_resource path="res://assets/ui/hud/health_alert00.png" type="Texture" id=40]
+[ext_resource path="res://assets/ui/hud/mask_grayscale_2-4.png" type="Texture" id=41]
+[ext_resource path="res://assets/ui/hud/mask_grayscale_1-4.png" type="Texture" id=42]
+[ext_resource path="res://assets/ui/hud/mask_grayscale_4-4.png" type="Texture" id=43]
+[ext_resource path="res://assets/ui/hud/mask_grayscale_0-4.png" type="Texture" id=44]
+[ext_resource path="res://assets/ui/hud/mask_grayscale_3-4.png" type="Texture" id=45]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 415, 565.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2291.5, 129.75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 2276.13, 110.938 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 100, 371 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 50, 350 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 44 ), ExtResource( 42 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=10]
+<<<<<<< local
+resource_name = "Low"
+length = 2.0
+=======
+resource_name = "Alert"
+length = 1.5
+>>>>>>> other
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealthAlert:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthAlert:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.45098 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthAlert:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HealthAlert:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "LowAlert"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealthAlert:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthAlert:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthAlert:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HealthAlert:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealthAlert:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthAlert:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthAlert:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HealthAlert:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+<<<<<<< local
+tracks/4/type = "value"
+tracks/4/path = NodePath("HealthAlertSFX:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "VeryLow"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealthAlertSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthAlertSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthAlertSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HealthAlertSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+=======
+>>>>>>> other
+
+[node name="Root" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 428.0, 1067.0 ]
+}
+shader_mats = [ ExtResource( 30 ), ExtResource( 38 ), ExtResource( 9 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 36 ), ExtResource( 37 ) ]
+
+[node name="YSort" type="YSort" parent="."]
+pause_mode = 1
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 369, 830 )
+
+[node name="EnemySpawner" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 2171, 741 )
+
+[node name="Level" parent="YSort" instance=ExtResource( 28 )]
+position = Vector2( 0, 0 )
+
+[node name="MovementConstraints" type="Node2D" parent="YSort"]
+
+[node name="LevelStartBorder" type="StaticBody2D" parent="YSort/MovementConstraints"]
+position = Vector2( -904, 89 )
+collision_layer = 1048576
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MovementConstraints/LevelStartBorder"]
+position = Vector2( 621, 609 )
+shape = SubResource( 1 )
+
+[node name="LevelTopBorder" type="StaticBody2D" parent="YSort/MovementConstraints"]
+collision_layer = 1048576
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MovementConstraints/LevelTopBorder"]
+position = Vector2( 2174.5, 392 )
+shape = SubResource( 2 )
+
+[node name="LevelBottomBorder" type="StaticBody2D" parent="YSort/MovementConstraints"]
+collision_layer = 1048576
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MovementConstraints/LevelBottomBorder"]
+position = Vector2( 2169.88, 1160.94 )
+shape = SubResource( 3 )
+
+[node name="TutorialTrigger" type="Area2D" parent="YSort"]
+position = Vector2( 993, 765 )
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TutorialTrigger"]
+shape = SubResource( 4 )
+
+[node name="TutorialTrigger2" type="Area2D" parent="YSort"]
+position = Vector2( 1799, 753 )
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TutorialTrigger2"]
+shape = SubResource( 4 )
+
+[node name="TutorialTrigger3" type="Area2D" parent="YSort"]
+position = Vector2( 2793, 744 )
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/TutorialTrigger3"]
+shape = SubResource( 4 )
+
+[node name="EnemySpawnTrigger" type="Area2D" parent="YSort"]
+position = Vector2( 3462, 775 )
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/EnemySpawnTrigger"]
+shape = SubResource( 8 )
+
+[node name="WinTrigger" type="Area2D" parent="YSort"]
+position = Vector2( 24811, 762 )
+collision_layer = 0
+collision_mask = 15
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/WinTrigger"]
+shape = SubResource( 8 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource( 26 )
+
+[node name="HealthSprite" type="AnimatedSprite" parent="HUD"]
+light_mask = 0
+position = Vector2( 268, 117.5 )
+frames = SubResource( 5 )
+frame = 5
+
+[node name="DashSprite" type="AnimatedSprite" parent="HUD"]
+light_mask = 0
+position = Vector2( 118, 170 )
+rotation = -0.191986
+frames = SubResource( 6 )
+frame = 3
+centered = false
+
+[node name="UltSprite" type="AnimatedSprite" parent="HUD"]
+light_mask = 0
+position = Vector2( 960, 140 )
+frames = SubResource( 7 )
+
+[node name="MaskSprite" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 1771, 161 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 13 )
+
+[node name="HealthAlert" type="AnimatedSprite" parent="HUD"]
+visible = false
+position = Vector2( 960, 530 )
+frames = SubResource( 9 )
+
+[node name="HealthAlertPlayer" type="AnimationPlayer" parent="HUD"]
+anims/Alert = SubResource( 10 )
+anims/LowAlert = SubResource( 12 )
+anims/RESET = SubResource( 11 )
+
+[node name="FramerateLabel" type="Label" parent="HUD"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="Tutorial" parent="HUD" instance=ExtResource( 10 )]
+light_mask = 0
+
+[node name="UI_Screens" type="Node2D" parent="HUD"]
+
+[node name="PauseScreen" parent="HUD/UI_Screens" instance=ExtResource( 12 )]
+visible = false
+light_mask = 0
+
+[node name="DeathScreen" parent="HUD/UI_Screens" instance=ExtResource( 15 )]
+visible = false
+light_mask = 0
+
+[node name="OptionsScreen" parent="HUD/UI_Screens" instance=ExtResource( 5 )]
+visible = false
+light_mask = 0
+ingame = true
+
+[node name="KeybindingsScreen" parent="HUD/UI_Screens" instance=ExtResource( 16 )]
+visible = false
+light_mask = 0
+
+[node name="WinScreen" parent="HUD/UI_Screens" instance=ExtResource( 32 )]
+visible = false
+light_mask = 0
+
+[node name="SceneTransition" parent="HUD/UI_Screens" instance=ExtResource( 31 )]
+
+[node name="CursorParticles" parent="HUD" instance=ExtResource( 2 )]
+visible = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -25.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 27 )
+
+[connection signal="dash_charges_changed" from="YSort/Player" to="HUD" method="_on_Player_dash_charges_changed"]
+[connection signal="died" from="YSort/Player" to="HUD/UI_Screens/DeathScreen" method="_on_Player_died"]
+[connection signal="health_changed" from="YSort/Player" to="HUD" method="_on_Player_health_changed"]
+[connection signal="health_gained" from="YSort/Player" to="HUD" method="_on_Player_health_gained"]
+[connection signal="mask_collected" from="YSort/Player" to="HUD" method="_on_Player_mask_collected"]
+[connection signal="moved" from="YSort/Player" to="." method="_on_Player_moved"]
+[connection signal="moved" from="YSort/Player" to="YSort/EnemySpawner" method="_on_Player_moved"]
+[connection signal="ult_changed" from="YSort/Player" to="HUD" method="_on_Player_ult_changed"]
+[connection signal="enemy_destroyed" from="YSort/EnemySpawner" to="YSort/Player" method="_on_EnemySpawner_enemy_destroyed"]
+[connection signal="body_entered" from="YSort/TutorialTrigger" to="YSort/EnemySpawner" method="_on_TutorialTrigger_body_entered"]
+[connection signal="body_entered" from="YSort/TutorialTrigger" to="HUD/Tutorial" method="_on_TutorialTrigger_body_entered"]
+[connection signal="body_entered" from="YSort/TutorialTrigger2" to="YSort/EnemySpawner" method="_on_TutorialTrigger2_body_entered"]
+[connection signal="body_entered" from="YSort/TutorialTrigger3" to="YSort/EnemySpawner" method="_on_TutorialTrigger3_body_entered"]
+[connection signal="body_entered" from="YSort/EnemySpawnTrigger" to="YSort/EnemySpawner" method="_on_EnemySpawnTrigger_body_entered"]
+[connection signal="body_entered" from="YSort/WinTrigger" to="." method="_on_WinTrigger_body_entered"]
+
+[editable path="YSort/Player"]

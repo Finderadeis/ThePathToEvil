@@ -1,0 +1,587 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound/environment/grasshurt/grasshurt.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/environment/grass_01_cut.png" type="Texture" id=3]
+[ext_resource path="res://assets/sound/environment/grassdeath/grassdeath.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/environment/grass_01.png" type="Texture" id=5]
+[ext_resource path="res://scripts/level/grass.gd" type="Script" id=6]
+[ext_resource path="res://vfx/foreground_tree_mat.tres" type="Material" id=7]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 69.0652
+
+[sub_resource type="Animation" id=3]
+resource_name = "Die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("DeathSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GrassSprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "cut" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("GrassSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "cut" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AniTree:parameters/conditions/is_idling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AniTree:parameters/conditions/is_wobbLeft")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AniTree:parameters/conditions/is_wobbRight")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AniTree:parameters/conditions/is_wRback")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AniTree:parameters/conditions/is_wLback")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "damaged_object"
+tracks/0/type = "method"
+tracks/0/path = NodePath("HurtSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "idle"
+length = 8.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GrassSprite:material:shader_param/deformation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.4, 0.4 ), Vector2( 0, 0 ), Vector2( -0.4, 0.4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=39]
+resource_name = "wobble_left"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GrassSprite:material:shader_param/deformation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1.2, 1.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AniTree:parameters/conditions/is_wobbLeft")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AniTree:parameters/conditions/is_wobbRight")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=41]
+resource_name = "wobble_leftBack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GrassSprite:material:shader_param/deformation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.2, 1.2 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=40]
+resource_name = "wobble_right"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GrassSprite:material:shader_param/deformation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AniTree:parameters/conditions/is_wobbRight")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AniTree:parameters/conditions/is_wobbLeft")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=42]
+resource_name = "wobble_rightBack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("GrassSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GrassSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GrassSprite:material:shader_param/deformation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.2 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "damaged_object"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "Die"
+
+[sub_resource type="AnimationNodeAnimation" id=44]
+animation = "wobble_left"
+
+[sub_resource type="AnimationNodeAnimation" id=45]
+animation = "wobble_leftBack"
+
+[sub_resource type="AnimationNodeAnimation" id=46]
+animation = "wobble_right"
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "wobble_rightBack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachine" id=32]
+states/cut/node = SubResource( 1 )
+states/cut/position = Vector2( 720, 184 )
+states/idle/node = SubResource( 43 )
+states/idle/position = Vector2( 580, 184 )
+states/vanish/node = SubResource( 26 )
+states/vanish/position = Vector2( 863, 184 )
+states/wobble_left/node = SubResource( 44 )
+states/wobble_left/position = Vector2( 288, 82 )
+states/wobble_leftBack/node = SubResource( 45 )
+states/wobble_leftBack/position = Vector2( 530, 87 )
+states/wobble_right/node = SubResource( 46 )
+states/wobble_right/position = Vector2( 288, 291 )
+states/wobble_rightBack/node = SubResource( 47 )
+states/wobble_rightBack/position = Vector2( 530, 291 )
+transitions = [ "cut", "vanish", SubResource( 27 ), "idle", "wobble_left", SubResource( 48 ), "idle", "wobble_right", SubResource( 49 ), "wobble_right", "wobble_rightBack", SubResource( 50 ), "wobble_left", "wobble_leftBack", SubResource( 51 ), "wobble_leftBack", "idle", SubResource( 52 ), "wobble_rightBack", "idle", SubResource( 53 ), "idle", "cut", SubResource( 54 ) ]
+start_node = "idle"
+end_node = "vanish"
+graph_offset = Vector2( 69, 38 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=33]
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "cut",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 12, 32 )
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 12, 32 )
+
+[node name="grass" type="KinematicBody2D"]
+collision_layer = 2097152
+collision_mask = 8
+script = ExtResource( 6 )
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 7 )
+
+[node name="AniPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/damaged_object = SubResource( 8 )
+anims/idle = SubResource( 38 )
+anims/wobble_left = SubResource( 39 )
+anims/wobble_leftBack = SubResource( 41 )
+anims/wobble_right = SubResource( 40 )
+anims/wobble_rightBack = SubResource( 42 )
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource( 1 )
+samples = [ ExtResource( 2 ) ]
+random_volume_range = 0
+random_pitch_range = 1.0
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource( 1 )
+samples = [ ExtResource( 4 ) ]
+random_volume_range = 0
+random_pitch_range = 1.0
+
+[node name="AniTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 32 )
+anim_player = NodePath("../AniPlayer")
+active = true
+parameters/playback = SubResource( 33 )
+
+[node name="GrassSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 7 )
+scale = Vector2( 0.3, 0.3 )
+z_as_relative = false
+frames = SubResource( 35 )
+animation = "cut"
+
+[node name="wobble_left" type="Area2D" parent="."]
+collision_layer = 8388608
+
+[node name="Collision_right" type="CollisionShape2D" parent="wobble_left"]
+position = Vector2( 24, 24 )
+shape = SubResource( 36 )
+
+[node name="wobble_right" type="Area2D" parent="."]
+
+[node name="Collision_left" type="CollisionShape2D" parent="wobble_right"]
+position = Vector2( -12, 24 )
+shape = SubResource( 37 )
+
+[connection signal="body_entered" from="wobble_left" to="." method="_on_wobble_left_body_entered"]
+[connection signal="body_exited" from="wobble_left" to="." method="_on_wobble_left_body_exited"]
+[connection signal="body_entered" from="wobble_right" to="." method="_on_wobble_right_body_entered"]
+[connection signal="body_exited" from="wobble_right" to="." method="_on_wobble_right_body_exited"]

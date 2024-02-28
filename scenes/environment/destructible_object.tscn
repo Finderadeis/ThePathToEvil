@@ -1,0 +1,317 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://assets/environment/grass_01.png" type="Texture" id=1]
+[ext_resource path="res://scripts/level/destructible_object.gd" type="Script" id=2]
+[ext_resource path="res://scenes/environment/collectable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound/environment/grassdeath/grassdeath.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/environment/grasshurt/grasshurt.wav" type="AudioStream" id=5]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=6]
+[ext_resource path="res://assets/environment/grass_01_cut.png" type="Texture" id=7]
+[ext_resource path="res://assets/environment/grass_01normal.png" type="Texture" id=8]
+[ext_resource path="res://assets/vfx/grassparticle.png" type="Texture" id=9]
+[ext_resource path="res://vfx/destructible_object_particles_mat.tres" type="Material" id=10]
+[ext_resource path="res://vfx/grass_mat.tres" type="Material" id=11]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 69.0652
+
+[sub_resource type="Curve" id=23]
+max_value = 100.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 100 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=24]
+curve = SubResource( 23 )
+
+[sub_resource type="Curve" id=20]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 197.688 ), 0.0, 0.0, 0, 0, Vector2( 1, -179.585 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=21]
+curve = SubResource( 20 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+lifetime_randomness = 1.0
+emission_shape = 5
+emission_ring_radius = 60.0
+emission_ring_inner_radius = 30.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, -500, 0 )
+spread = 89.69
+gravity = Vector3( 0, 200, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 50.0
+linear_accel_random = 1.0
+linear_accel_curve = SubResource( 21 )
+damping = 100.0
+damping_curve = SubResource( 24 )
+angle = 720.0
+angle_random = 1.0
+scale_random = 1.0
+anim_speed_random = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 202, 294 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 202, 0, 202, 294 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 404, 0, 202, 294 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 606, 0, 202, 294 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Die"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("DeathSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.339811, 0.339811 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "damaged_object"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("HurtSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[node name="DestructibleObject" type="KinematicBody2D"]
+collision_layer = 2097152
+collision_mask = 8
+script = ExtResource( 2 )
+collectable_scene = ExtResource( 3 )
+max_health = 1.0
+collectable_spawn_chance = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -50 )
+shape = SubResource( 7 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = ExtResource( 10 )
+position = Vector2( -1, -91 )
+emitting = false
+amount = 30
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 9 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Particles2D"]
+visible = false
+frames = SubResource( 19 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 11 )
+position = Vector2( 9.53674e-07, -50 )
+scale = Vector2( 0.339811, 0.339811 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/damaged_object = SubResource( 8 )
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource( 6 )
+samples = [ ExtResource( 5 ) ]
+random_volume_range = 0
+random_pitch_range = 1.0
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource( 6 )
+samples = [ ExtResource( 4 ) ]
+random_volume_range = 0
+random_pitch_range = 1.0

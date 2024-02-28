@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemystunned.wav-269b0ebf26413a55f1686e3a9636769c.sample"
+
+[deps]
+
+source_file="res://assets/sound/enemies/enemystunned/enemystunned.wav"
+dest_files=[ "res://.import/enemystunned.wav-269b0ebf26413a55f1686e3a9636769c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
