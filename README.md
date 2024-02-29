@@ -1,6 +1,4 @@
 [![PathToEvilBanner](/1.png "Play on itch")](https://s4g.itch.io/the-path-to-evil)
-## 1st semester student project
-Play here: <https://s4g.itch.io/the-path-to-evil>
 
 ## What is it?
 A short but impactful 2D brawler set in an increasingly corrupted forest. <br>
