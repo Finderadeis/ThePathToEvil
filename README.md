@@ -1,4 +1,4 @@
-[![PathToEvilBanner](/ThePathToEvilBanner.png "Play on itch")](https://s4g.itch.io/the-path-to-evil)
+[![PathToEvilBanner](/1.png "Play on itch")](https://s4g.itch.io/the-path-to-evil)
 ## 1st semester student project
 Play here: <https://s4g.itch.io/the-path-to-evil>
 
